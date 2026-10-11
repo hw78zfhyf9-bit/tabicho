@@ -1,0 +1,42 @@
+/* 本番版で足したスタイル (base.css の上に重ねる) */
+
+/* 最初の画面・旅の選択 */
+.hero { display: grid; gap: 6px; padding-block: 22px 4px; }
+.hero h1 { font-family: var(--f-pop); font-weight: 400; font-size: 34px; line-height: 1.15; }
+.hero p { margin: 0; color: var(--muted); }
+.trip-card { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 12px; align-items: center; width: 100%; text-align: left; cursor: pointer; background: var(--surface); border: 2px solid var(--edge); border-radius: 18px; box-shadow: 3px 3px 0 var(--sh); padding: 10px 12px; }
+.trip-card:active { transform: translate(2px, 2px); box-shadow: none; }
+.trip-card .t { font: 700 16px var(--f-ui); overflow-wrap: anywhere; }
+.trip-card .s { font-size: 12.5px; color: var(--muted); }
+.flag { width: 44px; height: 44px; border-radius: 14px; border: 2px solid var(--edge); background: var(--y); display: grid; place-items: center; font: 700 14px var(--f-pop); color: var(--fx); }
+.back { border: 0; background: transparent; cursor: pointer; font: 700 13px var(--f-ui); color: var(--muted); padding: 2px 0; display: inline-flex; gap: 4px; align-items: center; }
+.err { background: var(--pk); color: #fff; border: 2px solid var(--edge); border-radius: 14px; padding: 8px 12px; font: 700 13px var(--f-ui); overflow-wrap: anywhere; }
+.steps { margin: 0; padding-left: 1.3em; display: grid; gap: 4px; font-size: 13.5px; }
+.code { font: 500 13px var(--f-mono); background: var(--bg); border: 2px dashed var(--edge); border-radius: 10px; padding: 6px 10px; overflow-wrap: anywhere; user-select: all; }
+.spin { text-align: center; padding: 60px 0; font: 700 14px var(--f-ui); color: var(--muted); }
+
+/* 地図 */
+.mapwrap { border: 2px solid var(--edge); border-radius: 18px; overflow: hidden; box-shadow: 3px 3px 0 var(--sh); background: var(--dot); position: relative; }
+.mapwrap.pick { outline: 3px dashed var(--pk); outline-offset: 3px; }
+#mapEl { height: 52vh; min-height: 300px; max-height: 520px; width: 100%; z-index: 0; }
+.leaflet-container { font-family: var(--f-body); background: var(--dot); }
+.leaflet-control-attribution { font-size: 10px; }
+.tbpin { background: transparent; border: 0; }
+.tbpin svg { width: 34px; height: 40px; overflow: visible; filter: drop-shadow(2px 3px 0 rgba(27, 23, 64, .35)); }
+.tbpin.sel svg { transform: scale(1.3); transform-origin: 50% 100%; }
+.tbpin.draft svg { animation: hop .7s ease-in-out infinite alternate; }
+@keyframes hop { from { transform: translateY(0); } to { transform: translateY(-6px); } }
+@media (prefers-reduced-motion: reduce) { .tbpin.draft svg { animation: none; } }
+.results { display: grid; gap: 6px; }
+.res { text-align: left; border: 2px solid var(--edge); border-radius: 12px; background: var(--surface); padding: 6px 10px; cursor: pointer; font-size: 13px; overflow-wrap: anywhere; }
+.res b { display: block; font-family: var(--f-ui); }
+.res:hover, .res:focus-visible { background: var(--y); color: var(--fx); }
+.plist { display: grid; gap: 8px; }
+.prow { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px; align-items: center; width: 100%; text-align: left; border: 2px solid var(--edge); border-radius: 14px; background: var(--surface); padding: 5px 8px; cursor: pointer; }
+.prow[aria-pressed="true"] { background: var(--y); color: var(--fx); box-shadow: 2px 2px 0 var(--sh); }
+.attr { font-size: 11px; color: var(--muted); }
+.attr a { color: inherit; }
+.copyrow { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: center; }
+a.btn { display: inline-block; text-decoration: none; }
+.pill.cat.tileonly { padding: 2px; }
+.ev.sync { opacity: .6; }
